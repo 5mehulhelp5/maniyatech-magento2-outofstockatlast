@@ -1,0 +1,25 @@
+{
+    "name": "maniyatech/magento2-outofstockatlast",
+    "description": "Move out-of-stock products to the end of category and search result pages.",
+    "require": {
+        "maniyatech/module-core": "*"
+    },
+    "type": "magento2-module",
+    "license": "proprietary",
+    "version": "1.0.0",
+    "authors": [
+        {
+          "name": "ManiyaTech",
+          "email": "help.maniyatech@gmail.com",
+          "role": "Technical Support"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "ManiyaTech\\OutOfStockAtLast\\": ""
+        }
+    }
+}

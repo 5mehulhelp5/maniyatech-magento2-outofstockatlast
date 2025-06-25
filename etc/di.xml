@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * ManiyaTech
+ *
+ * @author        Milan Maniya
+ * @package       ManiyaTech_OutOfStockAtLast
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!-- Add Custom Attribute to Elasticsearch6 and above Mapping  For Sorting or Filtering -->
+    <type name="Magento\Elasticsearch\Model\Adapter\FieldMapper\ProductFieldMapper">
+        <plugin sortOrder="10" name="add_more_field"
+                type="ManiyaTech\OutOfStockAtLast\Plugin\Model\Adapter\AdditionalFieldMapperPlugin"/>
+    </type>
+
+    <!-- Add Custom Attribute to Elasticsearch5 or Below Mapping  For Sorting or Filtering -->
+    <type name="Magento\Elasticsearch\Elasticsearch5\Model\Adapter\FieldMapper\ProductFieldMapperProxy">
+        <plugin sortOrder="10" name="add_more_field_deprecated"
+                type="ManiyaTech\OutOfStockAtLast\Plugin\Model\Adapter\AdditionalFieldMapperPlugin"/>
+    </type>
+
+    <!-- set inventory to Elasticsearch Mapping For Sorting or Filtering  in Search Result -->
+    <type name="Magento\Elasticsearch\Model\Adapter\BatchDataMapper\ProductDataMapper">
+        <plugin sortOrder="10" name="add_data_to_mappers_result"
+                type="ManiyaTech\OutOfStockAtLast\Plugin\Model\Adapter\BatchDataMapper\ProductDataMapperPlugin"/>
+    </type>
+
+    <!-- Ignore limitation filter using price -->
+    <type name="Magento\Catalog\Model\ResourceModel\Product\Collection\ProductLimitation">
+        <plugin sortOrder="10" name="ignore_limitation_filter_using_price"
+                type="ManiyaTech\OutOfStockAtLast\Plugin\Model\ResourceModel\Product\Collection\ProductLimitationPlugin"/>
+    </type>
+
+    <!-- set flag to Elasticsearch Mapping For Sorting or Filtering  in Search Result -->
+    <type name="Magento\Elasticsearch\Model\ResourceModel\Fulltext\Collection\SearchResultApplier">
+        <plugin sortOrder="10" name="mark_apply_flag"
+                type="ManiyaTech\OutOfStockAtLast\Plugin\Model\ResourceModel\Fulltext\Collection\SearchResultApplierPlugin"/>
+    </type>
+
+    <type name="Magento\Catalog\Model\ProductTypes\Config\Reader">
+        <arguments>
+            <argument name="idAttributes" xsi:type="array">
+                <item name="/config/type/stockIndexerModel" xsi:type="string"/>
+            </argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * ManiyaTech
+ *
+ * @author        Milan Maniya
+ * @package       ManiyaTech_OutOfStockAtLast
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="ManiyaTech_OutOfStockAtLast::main" title="Out of Stock at Last" translate="title" module="ManiyaTech_OutOfStockAtLast" parent="ManiyaTech_Core::core" sortOrder="140" resource="ManiyaTech_OutOfStockAtLast::main"/>
+
+        <add id="ManiyaTech_OutOfStockAtLast::configuration_menu" title="Configurations" module="ManiyaTech_OutOfStockAtLast" parent="ManiyaTech_OutOfStockAtLast::main" sortOrder="10" action="adminhtml/system_config/edit/section/outofstockatlast" resource="ManiyaTech_OutOfStockAtLast::configuration_menu" target="_blank"/>
+    </menu>
+</config>
